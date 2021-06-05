@@ -15,3 +15,5 @@ class WhiskySpider(scrapy.Spider):
         next_page = response.css('a.action.next::attr(href)').get()
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
+
+# hello GitHub
