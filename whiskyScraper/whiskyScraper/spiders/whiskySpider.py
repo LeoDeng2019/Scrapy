@@ -16,4 +16,3 @@ class WhiskySpider(scrapy.Spider):
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
 
-# hello GitHub
