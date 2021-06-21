@@ -2,7 +2,9 @@ import scrapy
 
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
-    start_urls = ['https://quotes.toscrape.com/']
+    start_urls = ['https://quotes.toscrape.com']+[
+        'https://quotes.toscrape.com/page/{}'.format(i) for i in range(2,4)
+        ]
 
     def parse(self, response):
         for quote in response.css('div.quote'):
@@ -12,4 +14,3 @@ class QuotesSpider(scrapy.Spider):
                 'tag': quote.css('a.tag::text').extract()
             }
 
-        
